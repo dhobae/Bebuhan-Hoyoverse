@@ -12,7 +12,7 @@ const Slide4 = () => {
             </h1>
             <div className="overflow-hidden rounded-lg shadow-lg relative">
               <iframe
-                className="w-auto h-[250px] md:w-[350px] md:h-[300px] lg:w-[650px] lg:h-[350px] pointer-events-none"
+                className="w-auto h-[250px] md:w-[350px] md:h-[300px] lg:w-[650px] lg:h-[350px]"
                 src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSRtGfo5JhWdfx2pkh0AXylTyNa4KnfNdpeA5ZT1sItRNmPhwTeWd2CiAEQHx0fOxj6Fa84qRPfnErk/pubhtml?gid=1940467538&amp;single=true&amp;widget=false&amp;headers=false"
                 title="List Anggota"
                 loading="lazy"
