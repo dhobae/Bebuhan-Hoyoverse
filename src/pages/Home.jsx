@@ -33,8 +33,8 @@ const Home = () => {
       <div id="swiper-wraps" className="w-auto h-screen z-10">
         {/* background kotak-kotak transparan animasi */}
         {/* carousel */}
-        <VidAnimate />
-        {/* <CubesAnimate /> */}
+        {/* <VidAnimate /> */}
+        <CubesAnimate />
         <Swiper
           onInit={(swiper) => {
             swiperRef.current = swiper; // Get the Swiper instance in onInit
