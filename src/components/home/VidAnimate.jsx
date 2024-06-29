@@ -5,12 +5,12 @@ const VidAnimate = () => {
     // area
     <div className="absolute inset-0">
       {/*  wrap */}
-      <div className="w-full h-screen">
+      <div className="w-full min-h-screen max-h-screen">
         <video
           autoPlay
           muted
           loop
-          className="absolute top-0 left-0 w-full h-screen object-cover brightness-50 overflow-hidden"
+          className="absolute top-0 left-0 w-full min-h-screen max-h-screen object-cover brightness-50 overflow-hidden"
         >
           <source src={hovkiana} type="video/mp4" />
         </video>

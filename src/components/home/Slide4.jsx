@@ -17,6 +17,13 @@ const Slide4 = () => {
                 title="List Anggota"
                 loading="lazy"
               ></iframe>
+              {/* gara-gara iframe spreadsheet */}
+              {/* pubhtml?gid=19404675…se&headers=false:62 Uncaught ReferenceError:
+              posObjs is not defined at switchToSheet
+              (pubhtml?gid=19404675…headers=false:62:11) at
+              pubhtml?gid=19404675…ders=false:98:10158 switchToSheet @
+              pubhtml?gid=19404675…se&headers=false:62 (anonymous) @
+              pubhtml?gid=19404675…se&headers=false:98 */}
               <Link
                 to="/list-anggota"
                 target="_blank"
