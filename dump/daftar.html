@@ -1,0 +1,67 @@
+import { useState } from "react";
+
+export default function ListAnggota() {
+  const [nama, setNama] = useState("");
+
+  const handleNama = (e) => {
+    setNama(e.target.value);
+  };
+
+  function Submit(e) {
+    e.preventDefault(); // Prevent default form submission
+
+    // Ambil nilai dari setiap input
+    // const name = e.target.elements.Name.value;
+    const email = e.target.elements.email.value;
+    const message = e.target.elements.YourMessage.value;
+
+    // Modifikasi email sesuai dengan yang diminta
+    const modifiedEmail = "is your email: " + email;
+
+    // Buat objek FormData untuk dikirimkan
+    const formData = new FormData();
+    formData.append("Name", nama);
+    formData.append("email", modifiedEmail);
+    formData.append("YourMessage", message);
+
+    // Kirim data menggunakan fetch
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyJqU1vqzGsOLAvVSqv9QQsHr8u2O_5LW7FUWDO-spGEQP2k_fR_Hg1eIwur5KOkWf1/exec",
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
+      // .then((res) => res.json())
+      .then((data) => {
+        console.log(data); // Output response dari server (opsional)
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }
+
+  return (
+    <div className="App">
+      <h1>Contact Me form</h1>
+      <h2>
+        This demonstrates how to send data from a website form to Google sheet
+        in React or Vanilla jS
+      </h2>
+      <div>
+        <form className="form" onSubmit={(e) => Submit(e)}>
+          <input
+            placeholder="Your Name"
+            name="Name"
+            type="tel"
+            value={nama}
+            onChange={handleNama}
+          />
+          <input placeholder="Your Email" name="email" type="email" />
+          <input placeholder="Your Message" name="YourMessage" type="text" />
+          <button type="submit">SUBMIT</button>
+        </form>
+      </div>
+    </div>
+  );
+}

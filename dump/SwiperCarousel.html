@@ -1,0 +1,222 @@
+/* eslint-disable no-unused-vars */
+import { useState, useRef, useEffect } from "react";
+import { Mousewheel, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
+import imgSection1 from "/img/kiana.png";
+import imgSection2Kafka from "/img/kafka.jpeg";
+import imgSection2Hutao from "/img/hutao.jpeg";
+import imgSection2Thelema from "/img/thelema.jpeg";
+import imgSection2Nicole from "/img/nicole.jpeg";
+
+
+const SwiperCarousel = () => {
+  // const [currentSlide, setCurrentSlide] = useState(0);
+  // const [totalSlides, setTotalSlides] = useState(0);
+  // const swiperRef = useRef(null);
+
+  // const handleArrowClick = () => {
+  //   if (swiperRef.current && swiperRef.current.swiper) {
+  //     swiperRef.current.swiper.slideTo(1); // Slide ke 2 (index 1)
+  //   }
+  // };
+
+  // const handleSwiper = (swiper) => {
+  //   setTotalSlides(swiper.slides.length);
+  // };
+
+  // const handleSlideChange = (swiper) => {
+  //   setCurrentSlide(swiper.activeIndex);
+  // };
+
+  // console.log(`CSlide ${currentSlide}`);
+  // console.log(`TotalSlide${totalSlides}`);
+
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const swiperRef = useRef(null); // No need to store total slides, Swiper provides this
+
+  const handleArrowClick = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideTo(1); // Directly use the slideTo method
+    }
+  };
+
+  const handleSlideChange = (swiper) => {
+    setCurrentSlide(swiper.realIndex); // Use realIndex for the actual slide number
+    // console.log("Total Slides:", swiper.slides.length); // total slide
+  };
+
+  return (
+    <>
+      <Swiper
+        // onSwiper={(swiper) => {
+        //   handleSwiper(swiper);
+        //   swiperRef.current = swiper;
+        // }}
+        // onSwiper={handleSwiper}
+        onInit={(swiper) => {
+          swiperRef.current = swiper; // Get the Swiper instance in onInit
+        }}
+        onSlideChange={handleSlideChange}
+        style={{
+          "--swiper-pagination-color": "#FFF",
+          "--swiper-pagination-bullet-inactive-color": "#94a3b8",
+          "--swiper-pagination-bullet-inactive-opacity": "1",
+          "--swiper-pagination-bullet-size": "14px",
+          "--swiper-pagination-bullet-horizontal-gap": "6px",
+        }}
+        direction={"vertical"}
+        slidesPerView={1}
+        mousewheel={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Mousewheel, Pagination]}
+        className="mySwiper w-full h-screen" // Tilføjer en klasse for nem styling
+      >
+        {/* Dine SwiperSlides */}
+        {/* <SwiperSlide>
+          <img
+            className="block w-full h-full object-cover"
+            src="https://anime-website-ui-bootstrap.vercel.app/assets/rin.png"
+            alt=""
+          />
+        </SwiperSlide> */}
+
+        {/* Slide 1: Selamat Datang */}
+        <SwiperSlide>
+          <div className="h-screen flex items-center justify-center">
+            {/* pb-[120px] */}
+            <div className="max-w-5xl mx-auto p-3 lg:p-0">
+              {/* card */}
+              <div className="bg-slate-100 bg-opacity-15 shadow-lg rounded-lg overflow-hidden flex flex-col md:flex-row md:items-center p-10">
+                {/* card header */}
+                <div className="md:w-1/2">
+                  <img
+                    className="block w-60 h-60 md:w-80 md:h-80 object-cover rounded-full mx-auto shadow-lg"
+                    src={imgSection1}
+                    alt="Kiana Kaslana"
+                  />
+                </div>
+                {/* card body */}
+                <div className="p-6 md:w-2/4 text-white">
+                  <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 text-center">
+                    Welcome To Our Website!
+                  </h3>
+                  <p className="text-center">
+                    Website{" "}
+                    <span className="font-semibold underline">
+                      Bebuhan Hoyoverse
+                    </span>{" "}
+                    <span className="block">
+                      Banjarmasin,Banjarbaru,Martapura, Dll.
+                    </span>
+                    <span className="block">Kalimantan Selatan</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <div className="h-screen flex flex-col justify-center items-center">
+            <div className="max-w-4xl text-white">
+              <h1 className="text-4xl font-bold mb-8 text-center">
+                Tentang Kami
+              </h1>
+              <div className="flex justify-center gap-3 mb-3">
+                <img
+                  className="block w-32 h-32 object-cover rounded-lg"
+                  src="https://anime-website-ui-bootstrap.vercel.app/assets/saber.jpg"
+                  alt=""
+                />
+                <img
+                  className="block w-32 h-32 object-cover rounded-lg"
+                  src="https://anime-website-ui-bootstrap.vercel.app/assets/matousakura.jpg"
+                  alt=""
+                />
+                {/* Tambahkan gambar-gambar lainnya di sini sesuai kebutuhan */}
+              </div>
+              <p className="text-lg text-center mt-4 max-w-3xl">
+                Sebuah komunitas yang terbentuk pada awalnya hanya dari sebuah
+                ide iseng karena pada saat itu tujuanya adalah untuk saling
+                bantu jika ada kesulitan dalam memainkan sebuah game atau pun
+                tips dan trik dari game hoyoverse ini
+              </p>
+            </div>
+          </div>
+        </SwiperSlide>
+
+        {/* <SwiperSlide>
+          <img
+            className="block w-full h-full object-cover"
+            src="https://anime-website-ui-bootstrap.vercel.app/assets/matousakura.jpg"
+            alt=""
+          />
+        </SwiperSlide> */}
+
+        <SwiperSlide>
+          <div className="h-screen flex flex-col justify-center items-center">
+            <h1 className="text-4xl font-bold mb-4">Project Kami</h1>
+            <div className="grid grid-cols-3 gap-4">
+              <img
+                className="block w-32 h-32 object-cover rounded"
+                src="https://anime-website-ui-bootstrap.vercel.app/assets/project1.jpg"
+                alt=""
+              />
+              <img
+                className="block w-32 h-32 object-cover rounded"
+                src="https://anime-website-ui-bootstrap.vercel.app/assets/project2.jpg"
+                alt=""
+              />
+              {/* Tambahkan gambar-gambar proyek lainnya di sini sesuai kebutuhan */}
+            </div>
+            <p className="text-lg text-center mt-4">
+              Kami bangga dengan hasil kerja kami dan siap untuk menunjukkan
+              kepada Anda.
+            </p>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+
+      <div
+        className={`flex absolute z-[100] bottom-2 left-1/2 transform -translate-x-1/2 justify-center mb-4 w-1/3 `}
+      >
+        <button
+          className="text-white hover:text-slate-100 focus:outline-none"
+          onClick={handleArrowClick}
+        >
+          <div className="flex flex-col justify-center items-center gap-1">
+            {currentSlide === 0 && (
+              <>
+                {/* <span className="font-light">Scroll Down</span> */}
+                <FaArrowDown className="font-semibold text-2xl text-white " />
+              </>
+            )}
+          </div>
+        </button>
+      </div>
+    </>
+  );
+};
+
+export default SwiperCarousel;
+// {
+//   currentSlide >= 0 && currentSlide < totalSlides - 1 && (
+//     <>
+//       {/* <span className="font-light">Scroll Down</span> */}
+//       <FaArrowDown className="font-semibold text-2xl fill-current" />
+//     </>
+//   );
+// }
+// {
+//   currentSlide === totalSlides - 1 && (
+//     <>
+//       {/* <span className="font-light">Scroll Up</span> */}
+//       <FaArrowUp className="font-semibold text-2xl fill-current" />
+//     </>
+//   );
+// }

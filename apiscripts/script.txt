@@ -1,0 +1,30 @@
+ const sheets = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1e02ID-UiyOgT7xqCCCWEaV1acKZ4mEuX3Vx24_o_1rA/edit?gid=0#gid=0");
+ //if you have changed your sheet name then replace the below Sheet1 with your sheet name
+const sheet = sheets.getSheetByName("Data");
+function doPost(e){
+  let data = e.parameter;
+  sheet.appendRow([data.nama,data.nohp,data.provinsi, data.kotakabupaten]);
+  return ContentService.createTextOutput("Your message was successfully sent to the Googlesheet database!");
+}
+
+
+
+// with numbers
+const sheets = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1e02ID-UiyOgT7xqCCCWEaV1acKZ4mEuX3Vx24_o_1rA/edit?gid=0#gid=0");
+//if you have changed your sheet name then replace the below Sheet1 with your sheet name
+const sheet = sheets.getSheetByName("Data");
+
+function doPost(e){
+  let data = e.parameter;
+  // Get the last row number
+  let lastRow = sheet.getLastRow();
+  // Calculate the new number
+  let newNumber = lastRow > 0 ? lastRow : 1; // If lastRow is 0, start with 1
+  // Append the new row with the number
+  sheet.appendRow([newNumber, data.nama, data.nohp, data.provinsi, data.kotakabupaten]);
+  return ContentService.createTextOutput("Your message was successfully sent to the Googlesheet database!");
+}
+
+
+
+
